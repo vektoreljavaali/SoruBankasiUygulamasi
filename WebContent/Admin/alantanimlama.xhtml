@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+
+
+<p:panelGrid columns="2" layout="grid" >
+
+<p:outputLabel value="Sınav Adı"/>
+<p:selectOneMenu id="console" value="#{alantanimlama.sinavid}" style="width:125px">
+            <f:selectItems value="#{alantanimlama.sinavlistesi}" var="sl" itemLabel="#{sl.sinavadi}" itemValue="#{sl.id}" />
+  
+            
+        </p:selectOneMenu>
+
+<p:outputLabel value="Alan Adı"/>
+<p:inputText value="#{alantanimlama.alanadi}" id="alanadi"/>
+
+<p:outputLabel value="Soru Sayısı"/>
+<p:inputText value="#{alantanimlama.sorusayisi}" id="sorusayisi" />
+
+<br />
+<p:commandButton value="Ekle" style="float:right"
+ action="#{alantanimlama.kaydet}" update="tablo"/>
+
+</p:panelGrid>
+
+ <p:dataTable id="tablo" var="alan" value="#{alantanimlama.alanlistesi}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                         {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                         {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+        <p:column headerText="Id">
+            <h:outputText value="#{alan.id}" />
+        </p:column>
+ 
+        <p:column headerText="Alan Adı">
+            <h:outputText value="#{alan.alanadi}" />
+        </p:column>
+ 
+        <p:column headerText="Soru Sayisi">
+            <h:outputText value="#{alan.sorusayisi}" />
+        </p:column>
+      
+    </p:dataTable>
+
+
+
+</html>

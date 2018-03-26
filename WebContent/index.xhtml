@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<h:form>
+
+
+<p:layout fullPage="true" id="mainlayout">
+ 
+    <p:layoutUnit position="north" size="100" >
+        <h:outputText value="North unit content." />
+    </p:layoutUnit>
+ 
+   
+    <p:layoutUnit position="west" size="250"  collapsible="true">
+      
+      <p:menu >
+        <p:submenu label="Tanımlamalar">
+            <p:menuitem value="Sınav Tanımlama" icon="ui-icon-disk" action="#{index.sayfaSec(1)}" update="panelortaalan" />
+            <p:menuitem value="Alan Tanımlama" icon="ui-icon-arrowrefresh-1-w" action="#{index.sayfaSec(2)}" update="panelortaalan" />
+            <p:menuitem value="Ders Tanımlama" icon="ui-icon-arrowrefresh-1-w" action="#{index.sayfaSec(3)}" update="panelortaalan"/>
+            <p:menuitem value="Konu Tanımlama" icon="ui-icon-arrowrefresh-1-w" action="#{index.sayfaSec(4)}" update="panelortaalan"/>
+            <p:menuitem value="Soru Tanımlama" icon="ui-icon-arrowrefresh-1-w" action="#{index.sayfaSec(5)}" update="panelortaalan"/>
+        
+        
+        
+        </p:submenu>
+        <p:submenu label="Yönetici İşlemleri">
+            <p:menuitem value="Moderatör Tanımlama" ajax="false" icon="ui-icon-close"/>
+            <p:menuitem value="Kullanıcı İşlemleri" ajax="false" icon="ui-icon-close"/>
+            <p:menuitem value="Branş Atama" ajax="false" icon="ui-icon-close"/>
+     
+        </p:submenu>
+        <p:submenu label="Soru İşlemleri">
+            <p:menuitem value="Soru Listesi" url="http://www.primefaces.org" icon="ui-icon-home"/>
+            <p:menuitem value="Onay Listesi"  icon="ui-icon-star"/>
+      
+        </p:submenu>
+    </p:menu>  
+    </p:layoutUnit>
+ 
+    
+    <p:layoutUnit position="center">
+    	<p:panel id="panelortaalan">
+    	<ui:include src="#{index.urlLinkleri}"></ui:include>
+       	</p:panel>
+        
+    </p:layoutUnit>
+
+</p:layout>
+ 
+
+
+ 
+ 
+ 
+ <p:dock position="bottom">
+  <p:menuitem value="Ana Sayfa" icon="resources/images/Home_48px.png" url="#"/>
+  <p:menuitem value="Öğrenci" icon="resources/images/Edit_Property_50px.png" url="#"/>
+  <p:menuitem value="Customer" icon="resources/images/Door_Hanger_40px.png" url="#"/>
+  <p:menuitem value="Customer" icon="resources/images/Hotel_Bed_40px.png" url="#"/>
+  <p:menuitem value="Customer" icon="resources/images/Person_40px.png" url="#"/>
+  <p:menuitem value="Customer" icon="resources/images/Reservation_48px.png" url="#"/>
+  <p:menuitem value="Customer" icon="resources/images/Service_Bell_40px.png" url="#"/>
+  <p:menuitem value="Customer" icon="resources/images/Towel_40px.png" url="#"/>
+   
+   
+</p:dock>
+
+
+
+</h:form>
+
+</h:body>
+
+
+</html>

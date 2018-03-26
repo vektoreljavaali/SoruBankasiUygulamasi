@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"	>
+
+
+<p:panelGrid columns="2" layout="grid" >
+
+<p:outputLabel value="Sınav Adı"/>
+<p:selectOneMenu id="console1" value="#{beanDersTanimlama.sinavid}" style="width:125px">
+            <f:selectItem itemLabel="Seçiniz.." itemValue="-1"></f:selectItem>
+            <p:ajax  update="console2" />
+            <f:selectItems value="#{beanDersTanimlama.sinavListesi}" 
+            var="sl" itemLabel="#{sl.sinavadi}" itemValue="#{sl.id}"
+            
+             />
+</p:selectOneMenu>
+
+<p:outputLabel value="Alan Adı"/>
+<p:selectOneMenu id="console2" value="#{beanDersTanimlama.alanid}" style="width:125px">
+         
+            <f:selectItems value="#{beanDersTanimlama.alanListesi}" var="sl1" itemLabel="#{sl1.alanadi}" itemValue="#{sl1.id}" />
+</p:selectOneMenu>
+
+<p:outputLabel value="Ders Adı"/>
+<p:inputText value="#{beanDersTanimlama.dersadi}" id="dersadi"/>
+
+<p:outputLabel value="Soru Sayısı"/>
+<p:inputText value="#{beanDersTanimlama.sorusayisi}" id="sorusayisi" />
+
+<br />
+<p:commandButton value="Ekle" style="float:right"
+ action="#{beanDersTanimlama.kaydet()}" update="tablo"/>
+
+</p:panelGrid>
+
+ <p:dataTable id="tablo" var="alan" value="#{beanDersTanimlama.dersListesi}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                         {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                         {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+        <p:column headerText="Id">
+            <h:outputText value="#{alan.id}" />
+        </p:column>
+ 
+        <p:column headerText="Alan Adı">
+            <h:outputText value="#{alan.ad}" />
+        </p:column>
+ 
+        <p:column headerText="Soru Sayisi">
+            <h:outputText value="#{alan.sorusayisi}" />
+        </p:column>
+      
+    </p:dataTable>
+
+
+</html>
