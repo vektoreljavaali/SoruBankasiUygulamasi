@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 
 public class BaseServices<T>{
@@ -42,5 +43,11 @@ public class BaseServices<T>{
 		       Criteria cr = ss.createCriteria(t);
 		       return cr.list();
 		   } 
+		   
+		   public List bul(Class t, long id) {
+			   Session ss= getSession();
+			   Criteria cr = ss.createCriteria(t).add(Restrictions.eq("id", id));
+			   return cr.list();
+		   }
 	
 }

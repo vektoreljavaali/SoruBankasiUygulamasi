@@ -39,8 +39,11 @@ public class tblalanDAO implements ICRUD<tblalan>{
 
 	@Override
 	public tblalan Bul(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		tblalan alan = new tblalan();
+		for (tblalan item :  (ArrayList<tblalan>)bs.bul(tblalan.class, id)) {
+			alan = item;					
+		}
+		return alan;
 	}
 	
 		public List<tblalan> SecListele(long sinavid) {
