@@ -4,9 +4,13 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 
 import org.apache.catalina.util.TomcatCSS;
 
+import DAO.tblalanDAO;
+import DAO.tbldersDAO;
+import DAO.tblsinavDAO;
 import Models.*;
 
 @ManagedBean(name="defaultsayfa")
@@ -22,6 +26,21 @@ public class Default {
 	private int toplamcozulensoru;
 	private int yapilansinav;
 	private String solmenu;
+	
+	ArrayList<tblsinav> sinavListesi = new ArrayList<>();
+	ArrayList<tblalan> alanListesi = new ArrayList<>();
+	ArrayList<tblders> dersListesi = new ArrayList<>();
+	tblders tmp = new tblders();
+	private long sinavid;
+	private long alanid;
+	private String dersadi;
+	private int sorusayisi;
+	
+	tbldersDAO DB = new tbldersDAO();
+	tblalanDAO DBAlan = new tblalanDAO();
+	tblsinavDAO DBSinav = new tblsinavDAO();
+	
+	
 	
 	public Default() {
 		kullaniciAdi = util.staticValues.girisAdi;
@@ -49,7 +68,7 @@ public class Default {
 		listeders.add(dd);
 		dd = new tblders();
 		dd.setId(2);
-		dd.setAd("T�rk�e");
+		dd.setAd("Türkçe");
 		dd.setSinavid(1);
 		listeders.add(dd);
 	
@@ -75,11 +94,12 @@ public class Default {
 		dd.setSinavid(3);
 		listeders.add(dd);
 		solmenu = listele();
+		
+		alanListesi = (ArrayList<tblalan>) DBAlan.Listele();
+		dersListesi = (ArrayList<tblders>) DB.Listele();
+		sinavid=-1;
+		System.out.println("burası çalıştı");
 	}
-	
-	
-	
-	
 	
 	public String listele() {
 		
@@ -102,13 +122,128 @@ public class Default {
 	}
 	
 	
+	public tblders getTmp() {
+		return tmp;
+	}
+
+		public void getir() {
+			alanListesi=(ArrayList<tblalan>) DBAlan.SecListele(sinavid);
+			System.out.println("getir");
+		}
 	
+	public void valueChangeMethod(ValueChangeEvent e){
+		System.out.println(e.getNewValue().toString());
+		alanListesi=(ArrayList<tblalan>) DBAlan.SecListele(sinavid);
+		System.out.println("getir");
+	}
 	
-	
-	
-	
-	
-	
+	public void setTmp(tblders tmp) {
+		this.tmp = tmp;
+	}
+
+
+	public long getSinavid() {
+		return sinavid;
+	}
+
+	public void setSinavid(long sinavid) {
+		this.sinavid = sinavid;
+		System.out.println(sinavid);
+	}
+
+	public long getAlanid() {
+		return alanid;
+	}
+
+
+	public void setAlanid(long alanid) {
+		this.alanid = alanid;
+	}
+
+
+	public String getDersadi() {
+		return dersadi;
+	}
+
+
+
+
+
+	public void setDersadi(String dersadi) {
+		this.dersadi = dersadi;
+	}
+
+
+
+
+
+	public int getSorusayisi() {
+		return sorusayisi;
+	}
+
+
+
+
+
+	public void setSorusayisi(int sorusayisi) {
+		this.sorusayisi = sorusayisi;
+	}
+
+
+
+
+
+	public ArrayList<tblsinav> getSinavListesi() {
+		sinavListesi=(ArrayList<tblsinav>) DBSinav.Listele();
+		return sinavListesi;
+	}
+
+
+
+
+
+	public void setSinavListesi(ArrayList<tblsinav> sinavListesi) {
+		this.sinavListesi = sinavListesi;
+	}
+
+
+
+
+
+	public ArrayList<tblalan> getAlanListesi() {
+		 alanListesi=(ArrayList<tblalan>) DBAlan.SecListele(sinavid);
+			
+		return alanListesi;
+	}
+
+
+
+
+
+	public void setAlanListesi(ArrayList<tblalan> alanListesi) {
+		this.alanListesi = alanListesi;
+	}
+
+
+
+
+
+	public ArrayList<tblders> getDersListesi() {
+		return dersListesi;
+	}
+
+
+
+
+
+	public void setDersListesi(ArrayList<tblders> dersListesi) {
+		this.dersListesi = dersListesi;
+	}
+
+
+
+
+
 	public String getSolmenu() {
 		return solmenu;
 	}

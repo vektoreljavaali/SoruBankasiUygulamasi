@@ -5,8 +5,7 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	>
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -47,12 +46,13 @@
 </h:head>
 
 <h:body class="nav-md">
-<h:form>
+<h:form id="frmdefault">
 
  <div class="container body">
 
 
         <div class="main_container">
+
 
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
@@ -84,10 +84,8 @@
                         <div class="menu_section">
                             <h3>Menü </h3>
                             <ul class="nav side-menu">
-                            
-                            
-                            <h:outputText value="#{defaultsayfa.solmenu}" escape="false"/>   
                               
+                            <h:outputText value="#{defaultsayfa.solmenu}" escape="false"/>   
                                 
                             </ul>
                         </div>
@@ -142,7 +140,7 @@
                             <li role="presentation" class="dropdown">
                                 <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
+                                    <span class="badge bg-green">1</span>
                                 </a>
                                 <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
                                     <li>
@@ -184,7 +182,7 @@
             <div class="right_col" role="main">
 
                 <!-- top tiles -->
-                <div class="row tile_count">
+           <div class="row tile_count">
                     <div class="animated flipInY col-md-4 col-sm-6 col-xs-6 tile_stats_count">
                         <div class="left"></div>
                         <div class="right">
@@ -215,19 +213,34 @@
                 </div>
                 <!-- /top tiles -->
 
+
+				 <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 hide">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    
+                                    
+                                </div>
+                                <div class="x_content">
+                                    <br />
+                                    <h:form id="demo-form2"  class="form-horizontal form-label-left">
+    							  </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+ 
+
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="dashboard_graph">
-
-                            <div class="row x_title">
-                                <div class="col-md-12">
-                                    <h3>Sınav Çözme Ekranı <small>soru çözmek istediğiniz alanları seçiniz.</small></h3>
-                                </div>
-                               
-                            </div>
-
-                             <form class="form-horizontal form-label-left">
-                               
+                      <div class="x_panel">
+                       <div class="x_title">
+                          <h3>Sınav Çözme Ekranı <small>soru çözmek istediğiniz alanları seçiniz.</small></h3>
+                       <div class="clearfix"></div>
+                       </div>
+                      <div class="x_content">
+                          <h:form id="demo-form1" class="form-horizontal form-label-left">
                                  <div class="form-group">
 			                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ders Seçiniz</label>
 			                        <div class="col-md-9 col-sm-9 col-xs-12">
@@ -242,8 +255,10 @@
 			                          	                            
 			                          </select>
 			                        </div>
-			                                                       <br />
-			                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Konu Seçiniz</label>
+			                      
+                    		     </div>
+							     <div class="form-group">
+							  	<label class="control-label col-md-3 col-sm-3 col-xs-12">Konu Seçiniz</label>
 			                        <div class="col-md-9 col-sm-9 col-xs-12">
 			                          <select class="form-control">
 			                            <option>İnkılap Tarihi</option>
@@ -251,26 +266,66 @@
 			                          	                            
 			                          </select>
 			                        </div>
-                    		     </div>
+							</div>
+					     	
+					     <div class="form-group">
+					    <p:outputLabel value="Sınav Adı" class="control-label col-md-3 col-sm-3 col-xs-12"/>
+						 <div class="col-md-9 col-sm-9 col-xs-12">
+					
+						<h:selectOneMenu class="form-control" id="console1" 
+						value="#{defaultsayfa.sinavid}" style="width:125px"
+						>
+							            <f:selectItem itemLabel="Seçiniz.." itemValue="-1"></f:selectItem>
+							         	<f:ajax listener="#{defaultsayfa.getir}" render="console2"/>
+							            <f:selectItems value="#{defaultsayfa.sinavListesi}" 
+							            var="sl" itemLabel="#{sl.sinavadi}" itemValue="#{sl.id}" />
+						</h:selectOneMenu>
+						
+						
+						
+					
+					 </div>
+					     </div>
+						
+						 <div class="form-group">
+								 <p:outputLabel value="Alan Adı" class="control-label col-md-3 col-sm-3 col-xs-12"/>
+								 <div class="col-md-9 col-sm-9 col-xs-12">
+								<h:selectOneMenu class="form-control" id="console2" value="#{defaultsayfa.alanid}" style="width:125px">
+								      <f:selectItems value="#{defaultsayfa.alanListesi}" var="sl1" itemLabel="#{sl1.alanadi}" itemValue="#{sl1.id}" />
+								</h:selectOneMenu>
+								</div>
+						 </div>
+					     
+					      </h:form>
+                      </div>    
+			        </div>
+                 </div>
 
+                </div>
+               
+                <br />
+				
+				 <div class="row">
 
-                               
+					<div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Soru Çözme ekranı <small>cevaplarınızı seçerek ilerleyiniz...</small></h2>
+                                   
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
 
-                            </form>
-                            
-                                 <label class="control-label col-md-12 col-sm-12 col-xs-12">Sorular</label>
-			                    
-			                   
-			        <!-- Smart Wizard -->
-                    <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+								 <!-- Smart Wizard -->
+                    <p>İstediğiniz sorudan başlayabilir daha sonra düzeltme yapabilirsiniz...</p>
                     <div id="wizard" class="form_wizard wizard_horizontal">
                       <ul class="wizard_steps">
                         <li>
                           <a href="#step-1">
                             <span class="step_no">1</span>
                             <span class="step_descr">
-                                              Step 1<br />
-                                              <small>Step 1 description</small>
+                                              1. Soru<br />
+                                             
                                           </span>
                           </a>
                         </li>
@@ -278,8 +333,8 @@
                           <a href="#step-2">
                             <span class="step_no">2</span>
                             <span class="step_descr">
-                                              Step 2<br />
-                                              <small>Step 2 description</small>
+                                              2. Soru<br />
+                                             
                                           </span>
                           </a>
                         </li>
@@ -287,8 +342,8 @@
                           <a href="#step-3">
                             <span class="step_no">3</span>
                             <span class="step_descr">
-                                              Step 3<br />
-                                              <small>Step 3 description</small>
+                                              3. Soru<br />
+                                             
                                           </span>
                           </a>
                         </li>
@@ -296,42 +351,47 @@
                           <a href="#step-4">
                             <span class="step_no">4</span>
                             <span class="step_descr">
-                                              Step 4<br />
-                                              <small>Step 4 description</small>
+                                             4. Soru<br />
+                                             
                                           </span>
                           </a>
                         </li>
                       </ul>
                       <div id="step-1">
-                        <form class="form-horizontal form-label-left">
+                        <h:form class="form-horizontal form-label-left">
 
                          <div class="col-md-3">
                          
                          </div>
                          
                          <div class="col-md-6 center">
-                         			 <label>Gender *:</label>
+                         			 <label>Tarihte bilinen es eski Türk devleti aşağıdakilerden hanigisdir?</label>
                                         	<p>
-                                            M:
+                                          
                                             <input type="radio" class="flat" name="gender" id="genderM" value="M" checked="checked" />
+                                            A) Uygur
                                              </p>
                                               <p>
-                                              F:
+                                           
                                             <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+                                             B) Göktürk
                                              </p>
                                               <p>
+                                          
                                             <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+                                              C) Asya Hun
                                              </p>
                                               <p>
+                                          
                                             <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+                                            D) Hazar
                                              </p>
                                               <p>
+                                          
                                             <input type="radio" class="flat" name="gender" id="genderF" value="F" />
+                                              E) Avar
                                              </p>
-                                             
-                                                        
-                                       
-                         
+                                                               
                          </div>
                              
                              <div class="col-md-3">
@@ -340,7 +400,7 @@
                              </div>    
                          
 
-                        </form>
+                        </h:form>
 
                       </div>
                       <div id="step-2">
@@ -355,26 +415,19 @@
 
                     </div>
                     <!-- End SmartWizard Content -->
+                                                       
 
-			                   
-			                    
-                            
-                            
+								</div>
+							</div>
+						</div>
 
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <br />
-
+				 </div>
             
             </div>
             <!-- /page content -->
+       </div>
 
-        </div>
-
-    </div>
+</div>
 
     <div id="custom_notifications" class="custom-notifications dsp_none">
         <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">

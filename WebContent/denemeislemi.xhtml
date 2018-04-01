@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Gentallela Alela! | </title>
+
+    <!-- Bootstrap core CSS -->
+ 	
+ 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+ 	
+ 	
+<!-- 	<h:outputStylesheet library="fonts" name="css/font-awesome.min.css" /> -->
+
+	<link rel="stylesheet" type="text/css" 
+	  href="#{request.contextPath}/resources/fonts/css/font-awesome.min.css" />
+
+	<h:outputStylesheet library="css" name="animate.min.css" />
+	<h:outputStylesheet library="css" name="custom.css" />
+	<h:outputStylesheet library="css" name="maps/jquery-jvectormap-2.0.1.css" />
+<!-- 	<h:outputStylesheet library="css" name="icheck/flat/green.css" /> -->
+	<link rel="stylesheet" type="text/css" 
+	  href="#{request.contextPath}/resources/css/icheck/flat/green.css" />
+	
+	<h:outputStylesheet library="css" name="floatexamples.css" />
+	<h:outputStylesheet library="css" name="nprogress.css" />
+	
+  	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="nprogress.js" />
+	
+    
+    <script>
+        NProgress.start();
+    </script>
+</h:head>
+
+<h:body>
+<h:form>
+
+<div class="container body">
+
+
+        <div class="main_container">
+
+       <h:form>
+       
+	<h:selectOneMenu class="form-control" id="console1" 
+						value="#{defaultsayfa.sinavid}" style="width:125px"
+						onchange = "submit()" 
+   						valueChangeListener = "#{defaultsayfa.valueChangeMethod}">
+							            <f:selectItem itemLabel="Seçiniz.." itemValue="-1"></f:selectItem>
+							         
+							            <f:selectItems value="#{defaultsayfa.sinavListesi}" 
+							            var="sl" itemLabel="#{sl.sinavadi}" itemValue="#{sl.id}" />
+	</h:selectOneMenu>
+						
+	<h:selectOneMenu class="form-control" id="console2" value="#{defaultsayfa.alanid}" style="width:125px">
+								      <f:selectItems value="#{defaultsayfa.alanListesi}" var="sl1" itemLabel="#{sl1.alanadi}" itemValue="#{sl1.id}" />
+	</h:selectOneMenu>		
+       
+       </h:form>    
+
+
+
+</div>
+			
+</div>
+
+ <h:outputScript library="js" name="bootstrap.min.js" />
+	
+    <!-- gauge js -->
+    <h:outputScript library="js" name="gauge/gauge.min.js" />
+	<h:outputScript library="js" name="gauge/gauge_demo.js" />
+	
+	
+    <!-- chart js -->
+   
+    <h:outputScript library="js" name="chartjs/chart.min.js" />
+	
+    <!-- bootstrap progress js -->
+    <h:outputScript library="js" name="progressbar/bootstrap-progressbar.min.js" />
+    <h:outputScript library="js" name="nicescroll/jquery.nicescroll.min.js" />
+	
+    <!-- icheck -->
+
+    <h:outputScript library="js" name="icheck/icheck.min.js" />
+    
+    <!-- daterangepicker -->
+  
+    <h:outputScript library="js" name="moment.min.js" />
+    <h:outputScript library="js" name="daterangepicker.js" />
+    <h:outputScript library="js" name="custom.js" />
+  
+
+
+
+       <h:outputScript library="js" name="flot/jquery.flot.js" />
+       <h:outputScript library="js" name="flot/jquery.flot.pie.js" />
+       <h:outputScript library="js" name="flot/jquery.flot.orderBars.js" />
+       <h:outputScript library="js" name="flot/jquery.flot.time.min.js" />
+       <h:outputScript library="js" name="flot/date.js" />
+       <h:outputScript library="js" name="flot/jquery.flot.spline.js" />
+       <h:outputScript library="js" name="flot/jquery.flot.stack.js" />
+       <h:outputScript library="js" name="flot/curvedLines.js" />
+       <h:outputScript library="js" name="flot/jquery.flot.resize.js" />
+       <h:outputScript library="js" name="maps/jquery-jvectormap-2.0.1.min.js" />
+       <h:outputScript library="js" name="maps/gdp-data.js" />
+       <h:outputScript library="js" name="maps/jquery-jvectormap-world-mill-en.js" />
+       <h:outputScript library="js" name="maps/jquery-jvectormap-us-aea-en.js" />
+       <h:outputScript library="js" name="skycons/skycons.js" />
+     
+    
+       <h:outputScript library="js" name="jquery.min.js" />
+       <h:outputScript library="js" name="wizard/jquery.smartWizard.js" />
+ 
+ <script>
+          $(document).ready(function () {
+            // Smart Wizard 	
+            $('#wizard').smartWizard();
+
+            function onFinishCallback() {
+                $('#wizard').smartWizard('showMessage', 'Finish Clicked');
+                //alert('Finish Clicked');
+            }
+        });
+
+        $(document).ready(function () {
+            // Smart Wizard	
+            $('#wizard_verticle').smartWizard({
+                transitionEffect: 'slide'
+            });
+
+        });
+    </script>
+    
+    
+    <script>
+        var icons = new Skycons({
+                "color": "#73879C"
+            }),
+            list = [
+                "clear-day", "clear-night", "partly-cloudy-day",
+                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+                "fog"
+            ],
+            i;
+
+        for (i = list.length; i--;)
+            icons.set(list[i], list[i]);
+
+        icons.play();
+    </script>
+
+    <!-- dashbord linegraph -->
+    <script>
+        var doughnutData = [
+            {
+                value: 30,
+                color: "#455C73"
+            },
+            {
+                value: 30,
+                color: "#9B59B6"
+            },
+            {
+                value: 60,
+                color: "#BDC3C7"
+            },
+            {
+                value: 100,
+                color: "#26B99A"
+            },
+            {
+                value: 120,
+                color: "#3498DB"
+            }
+    ];
+        var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData);
+    </script>
+    <!-- /dashbord linegraph -->
+    <!-- datepicker -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var cb = function (start, end, label) {
+                console.log(start.toISOString(), end.toISOString(), label);
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                //alert("Callback has fired: [" + start.format('MMMM D, YYYY') + " to " + end.format('MMMM D, YYYY') + ", label = " + label + "]");
+            }
+
+            var optionSet1 = {
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment(),
+                minDate: '01/01/2012',
+                maxDate: '12/31/2015',
+                dateLimit: {
+                    days: 60
+                },
+                showDropdowns: true,
+                showWeekNumbers: true,
+                timePicker: false,
+                timePickerIncrement: 1,
+                timePicker12Hour: true,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                opens: 'left',
+                buttonClasses: ['btn btn-default'],
+                applyClass: 'btn-small btn-primary',
+                cancelClass: 'btn-small',
+                format: 'MM/DD/YYYY',
+                separator: ' to ',
+                locale: {
+                    applyLabel: 'Submit',
+                    cancelLabel: 'Clear',
+                    fromLabel: 'From',
+                    toLabel: 'To',
+                    customRangeLabel: 'Custom',
+                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                    firstDay: 1
+                }
+            };
+            $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+            $('#reportrange').daterangepicker(optionSet1, cb);
+            $('#reportrange').on('show.daterangepicker', function () {
+                console.log("show event fired");
+            });
+            $('#reportrange').on('hide.daterangepicker', function () {
+                console.log("hide event fired");
+            });
+            $('#reportrange').on('apply.daterangepicker', function (ev, picker) {
+                console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+            });
+            $('#reportrange').on('cancel.daterangepicker', function (ev, picker) {
+                console.log("cancel event fired");
+            });
+            $('#options1').click(function () {
+                $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
+            });
+            $('#options2').click(function () {
+                $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
+            });
+            $('#destroy').click(function () {
+                $('#reportrange').data('daterangepicker').remove();
+            });
+        });
+    </script>
+    <script>
+        NProgress.done();
+    </script>
+
+</h:form>
+</h:body>
+
+</html>

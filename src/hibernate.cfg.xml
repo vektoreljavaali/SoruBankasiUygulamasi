@@ -47,6 +47,6 @@ Contributor(s):
     <mapping class="Models.tblsinav"></mapping>
     <mapping class="Models.tblalan"></mapping>
     <mapping class="Models.tblders"></mapping>
-    
+   
   </session-factory>
 </hibernate-configuration>
