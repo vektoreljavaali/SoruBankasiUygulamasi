@@ -20,4 +20,15 @@
     <url-pattern>*.jsf</url-pattern>
   </servlet-mapping>
 
+	<filter>
+	<filter-name>filtreleme</filter-name>
+	<filter-class>util.LoginFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+	<filter-name>filtreleme</filter-name>
+	<url-pattern>/AdminPanel/*</url-pattern>
+	<url-pattern>/Users/*</url-pattern>
+	</filter-mapping>
+
 </web-app>
